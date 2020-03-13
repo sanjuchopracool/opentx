@@ -34,7 +34,7 @@ bool isBootloader(const char * filename)
   return isBootloaderStart(buffer);
 }
 
-void bootloaderFlash(const char * filename)
+void bootloaderFlash(const char * filename, ProgressHandler progressHandler)
 {
   FIL file;
   uint8_t buffer[1024];
@@ -63,7 +63,9 @@ void bootloaderFlash(const char * filename)
     for (int j = 0; j < 1024; j += FLASH_PAGESIZE) {
       flashWrite(CONVERT_UINT_PTR(FIRMWARE_ADDRESS + i + j), CONVERT_UINT_PTR(buffer + j));
     }
-#if !defined(COLORLCD)
+#if defined(COLORLCD)
+    progressHandler("Bootloader", STR_WRITING, i, BOOTLOADER_SIZE);
+#else
     drawProgressScreen("Bootloader", STR_WRITING, i, BOOTLOADER_SIZE);
 #endif
 #if defined(SIMU)

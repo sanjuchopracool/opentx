@@ -86,6 +86,29 @@ class FilePreview : public Window
     BitmapBuffer *bitmap = nullptr;
 };
 
+class FlashBootloaderDialog: public FullScreenDialog
+{
+  public:
+    FlashBootloaderDialog():
+      FullScreenDialog(WARNING_TYPE_INFO, "Flash Bootloader"),
+      progress(this, {LCD_W / 2 - 50, LCD_H / 2, 100, 15})
+    {
+    }
+
+    void flash(const char * filename)
+    {
+      bootloaderFlash(filename, [=](const char * title, const char * message, int count, int total) -> void {
+          setMessage(message);
+          progress.setValue(total > 0 ? count * 100 / total : 0);
+          mainWindow.run(false);
+      });
+      deleteLater();
+    }
+
+  protected:
+    Progress progress;
+};
+
 class FlashModuleDialog: public FullScreenDialog
 {
   public:
@@ -195,7 +218,8 @@ void RadioSdManagerPage::build(FormWindow * window)
             if (!READ_ONLY() && !strcasecmp(ext, FIRMWARE_EXT)) {
               if (isBootloader(name.data())) {
                 menu->addLine(STR_FLASH_BOOTLOADER, [=]() {
-                    // TODO
+                    auto dialog = new FlashBootloaderDialog();
+                    dialog->flash(getFullPath(name));
                 });
               }
             }
