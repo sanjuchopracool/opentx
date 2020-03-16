@@ -1775,7 +1775,9 @@ void runStartupAnimation()
     else if (!isPowerOn) {
       isPowerOn = true;
       pwrOn();
+#if defined(HAPTIC)
       haptic.play(15, 3, PLAY_NOW);
+#endif
     }
   }
 
@@ -2150,7 +2152,9 @@ uint32_t pwrCheck()
             return e_power_on;
           }
         }
+#if defined(HAPTIC)
         haptic.play(15, 3, PLAY_NOW);
+#endif
         pwr_check_state = PWR_CHECK_OFF;
         return e_power_off;
       }
