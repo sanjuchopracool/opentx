@@ -509,6 +509,10 @@ typedef uint32_t swarnenable_t;
 typedef uint32_t swconfig_t;
 typedef uint32_t swarnstate_t;
 typedef uint16_t swarnenable_t; // TODO remove it in 2.4
+#elif defined(PCB_DEVEBOX)
+typedef uint32_t swconfig_t;
+typedef uint32_t swarnstate_t;
+typedef uint16_t swarnenable_t; // TODO remove it in 2.4
 #elif defined(PCBTARANIS)
 typedef uint16_t swconfig_t;
 typedef uint16_t swarnstate_t;
@@ -547,6 +551,10 @@ PACK(struct CustomScreenData {
 #endif
 
 #if defined(PCBX9D) || defined(PCBX9DP) || defined(PCBX9E)
+  #define TOPBAR_DATA \
+    NOBACKUP(uint8_t voltsSource); \
+    NOBACKUP(uint8_t altitudeSource);
+#elif defined(PCB_DEVEBOX)
   #define TOPBAR_DATA \
     NOBACKUP(uint8_t voltsSource); \
     NOBACKUP(uint8_t altitudeSource);
