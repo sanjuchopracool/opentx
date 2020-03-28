@@ -44,12 +44,12 @@ void lcdWriteCommand(uint8_t byte)
 {
   LCD_A0_LOW();
   LCD_NCS_LOW();
-  while ((SPI3->SR & SPI_SR_TXE) == 0) {
+  while ((LCD_SPI->SR & SPI_SR_TXE) == 0) {
     // Wait
   }
-  (void)SPI3->DR; // Clear receive
+  (void)LCD_SPI->DR; // Clear receive
   LCD_SPI->DR = byte;
-  while ((SPI3->SR & SPI_SR_RXNE) == 0) {
+  while ((LCD_SPI->SR & SPI_SR_RXNE) == 0) {
     // Wait
   }
   LCD_NCS_HIGH();
