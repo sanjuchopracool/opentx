@@ -845,13 +845,6 @@ void ledBlue();
 #define LCD_CONTRAST_MIN                0
 #define LCD_CONTRAST_MAX                45
 #define LCD_CONTRAST_DEFAULT            25
-#elif defined(PCB_DEVEBOX)
-#define LCD_W                           212
-#define LCD_H                           64
-#define LCD_DEPTH                       4
-#define LCD_CONTRAST_MIN                0
-#define LCD_CONTRAST_MAX                45
-#define LCD_CONTRAST_DEFAULT            25
 #else
 #define LCD_W                           128
 #define LCD_H                           64

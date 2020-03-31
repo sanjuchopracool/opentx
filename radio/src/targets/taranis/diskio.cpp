@@ -569,6 +569,7 @@ DSTATUS disk_initialize (
         BYTE drv                /* Physical drive number (0) */
 )
 {
+    return STA_NODISK;
   BYTE n, cmd, ty, ocr[4];
 
   if (drv) return STA_NOINIT;                     /* Supports only single drive */
@@ -624,6 +625,8 @@ DSTATUS disk_status (
         BYTE drv                /* Physical drive number (0) */
 )
 {
+    return STA_NODISK;
+
   if (drv) return STA_NOINIT;             /* Supports only single drive */
   return Stat;
 }
@@ -697,6 +700,7 @@ DRESULT disk_read (
         UINT count                      /* Sector count (1..255) */
 )
 {
+   return RES_ERROR;
   if (drv || !count) return RES_PARERR;
   if (Stat & STA_NOINIT) return RES_NOTRDY;
   int8_t res = SD_ReadSectors(buff, sector, count);
@@ -770,6 +774,7 @@ DRESULT disk_write (
         UINT count                      /* Sector count (1..255) */
 )
 {
+        return RES_ERROR;
   if (drv || !count) return RES_PARERR;
   if (Stat & STA_NOINIT) return RES_NOTRDY;
   if (Stat & STA_PROTECT) return RES_WRPRT;
@@ -789,6 +794,7 @@ DRESULT disk_ioctl (
         void *buff              /* Buffer to send/receive control data */
 )
 {
+        return RES_ERROR;
   DRESULT res;
   BYTE n, csd[16], *ptr = (BYTE *)buff;
   WORD csize;
