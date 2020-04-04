@@ -58,7 +58,7 @@ uint8_t isBacklightEnabled()
 {
   return (BACKLIGHT_TIMER->CCR1 != 0 || BACKLIGHT_TIMER->CCR2 != 0);
 }
-#elif defined(PCBX9DP)
+#elif defined(PCBX9DP) || defined(PCB_DEVEBOX)
 void backlightInit()
 {
   GPIO_InitTypeDef GPIO_InitStructure;
