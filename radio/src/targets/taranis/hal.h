@@ -882,15 +882,11 @@
     #define ADC_CHANNEL_POT3            0
     #define ADC_VREF_PREC2              300
   #endif
-  #define ADC_GPIO_PIN_SLIDER1          GPIO_Pin_4  // PC.04
-  #define ADC_GPIO_PIN_SLIDER2          GPIO_Pin_5  // PC.05
   #define ADC_GPIO_PIN_BATT             GPIO_Pin_0  // PC.00
   #define ADC_GPIOA_PINS                (ADC_GPIO_PIN_STICK_RV | ADC_GPIO_PIN_STICK_RH | ADC_GPIO_PIN_STICK_LH | ADC_GPIO_PIN_STICK_LV | ADC_GPIO_PIN_POT1)
-  #define ADC_GPIOC_PINS                (ADC_GPIO_PIN_SLIDER1 | ADC_GPIO_PIN_SLIDER2 | ADC_GPIO_PIN_BATT)
+  #define ADC_GPIOC_PINS                (ADC_GPIO_PIN_BATT)
   #define ADC_CHANNEL_POT1              ADC_Channel_6
   #define ADC_CHANNEL_POT2              ADC_Channel_8
-  #define ADC_CHANNEL_SLIDER1           ADC_Channel_14
-  #define ADC_CHANNEL_SLIDER2           ADC_Channel_15
   #define ADC_CHANNEL_BATT              ADC_Channel_10
 #elif defined(PCBXLITE)
   #define HARDWARE_POT1
@@ -1605,7 +1601,7 @@
   #define INTMODULE_HEARTBEAT
   #define INTMODULE_HEARTBEAT_RCC_AHB1Periph      RCC_AHB1Periph_GPIOC
   #define INTMODULE_HEARTBEAT_GPIO                GPIOC
-  #define INTMODULE_HEARTBEAT_GPIO_PIN            GPIO_Pin_7
+  #define INTMODULE_HEARTBEAT_GPIO_PIN            GPIO_Pin_7   // PC.07
   #define INTMODULE_HEARTBEAT_EXTI_PortSource     EXTI_PortSourceGPIOC
   #define INTMODULE_HEARTBEAT_EXTI_PinSource      GPIO_PinSource7
   #define INTMODULE_HEARTBEAT_EXTI_LINE           EXTI_Line7
@@ -1836,11 +1832,11 @@
   #define LCD_MOSI_GPIO_PinSource       GPIO_PinSource15
   #define LCD_CLK_GPIO_PIN              GPIO_Pin_13 // PB.13
   #define LCD_CLK_GPIO_PinSource        GPIO_PinSource13
-  #define LCD_A0_GPIO_PIN               GPIO_Pin_1 // PB.1
+  #define LCD_A0_GPIO_PIN               GPIO_Pin_1 // PB.01
   #define LCD_NCS_GPIO                  GPIOB
   #define LCD_NCS_GPIO_PIN              GPIO_Pin_12 // PB.12
   #define LCD_RST_GPIO                  GPIOC
-  #define LCD_RST_GPIO_PIN              GPIO_Pin_5 // PC.5
+  #define LCD_RST_GPIO_PIN              GPIO_Pin_5 // PC.05
   #define LCD_DMA                       DMA1
   #define LCD_DMA_Stream                DMA1_Stream4
   #define LCD_DMA_Stream_IRQn           DMA1_Stream4_IRQn
@@ -2063,7 +2059,7 @@
   #define HAPTIC_RCC_APB2Periph         0
   #define HAPTIC_RCC_APB1Periph         0
   #define HAPTIC_GPIO                   GPIOC
-  #define HAPTIC_GPIO_PIN               GPIO_Pin_12
+  #define HAPTIC_GPIO_PIN               GPIO_Pin_12 // PC.12
 #endif
 
 // Top LCD on X9E

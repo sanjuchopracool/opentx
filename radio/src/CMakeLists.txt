@@ -104,6 +104,10 @@ if(NOT PCB STREQUAL 9XRPRO)
   endif()
 endif()
 
+if(PCB STREQUAL STM32F4_DEVEBOX)
+    set(LUA NO)
+endif()
+
 if(CPU_TYPE STREQUAL STM32F4)
   include(targets/common/arm/stm32/f4/CMakeLists.txt)
 endif()

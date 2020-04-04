@@ -471,7 +471,7 @@ uint32_t readTrims();
 #define KEYS_PRESSED()                  (readKeys())
 
 // WDT driver
-#define WDG_DURATION                      500 /*ms*/
+#define WDG_DURATION                      5000 /*ms*/
 #if !defined(WATCHDOG) || defined(SIMU)
   #define WDG_ENABLE(x)
   #define WDG_RESET()
@@ -692,7 +692,11 @@ uint8_t isBacklightEnabled();
 #endif
 
 // I2C driver: EEPROM + Audio Volume
+#if defined(PCB_DEVEBOX)
+#define EEPROM_SIZE                   (32*1024) // I actually have 256KB EEPROM
+#else
 #define EEPROM_SIZE                   (32*1024)
+#endif
 
 void i2cInit();
 void eepromReadBlock(uint8_t * buffer, size_t address, size_t size);
