@@ -289,14 +289,14 @@ elseif(PCB STREQUAL BHIM)
       set(CPU_TYPE STM32F4)
       set(CPU_TYPE_FULL STM32F407xE)  # for size report
       set(LINKER_SCRIPT targets/taranis/stm32f4_flash.ld)
-      set(PWR_BUTTON "PRESS" CACHE STRING "Pwr button type (PRESS/SWITCH)")
+      set(PWR_BUTTON "SWITCH" CACHE STRING "Pwr button type (PRESS/SWITCH)")
       set(FIRMWARE_TARGET_SRC
         ${FIRMWARE_TARGET_SRC}
         startup_stm32f40_41xxx.s
         )
 #      add_definitions(-DRADIO_X9DP2019)
       add_definitions(-DSTM32F40_41xxx)
-      add_definitions(-DSOFTWARE_VOLUME -DPWR_BUTTON_${PWR_BUTTON} -DHARDWARE_POWER_MANAGEMENT_UNIT)
+      add_definitions(-DSOFTWARE_VOLUME -DPWR_BUTTON_SWITCH -DHARDWARE_POWER_MANAGEMENT_UNIT)
       set(STATUS_LEDS NO)
       set(PXX2 OFF)
       set(PXX1 OFF)

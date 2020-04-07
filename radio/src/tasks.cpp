@@ -217,6 +217,10 @@ TASK_FUNCTION(menusTask)
 {
   opentxInit();
 
+  lcdDrawCenteredText(30, "S1");
+  lcdRefresh(true);
+  delay_ms(1000);
+
 #if defined(PWR_BUTTON_PRESS)
   while (true) {
     uint32_t pwr_check = pwrCheck();
@@ -259,7 +263,14 @@ TASK_FUNCTION(menusTask)
   ledOff();
 #endif
 
+  lcdDrawCenteredText(30, "S2");
+  lcdRefresh(true);
+  delay_ms(1000);
+
   drawSleepBitmap();
+  lcdDrawCenteredText(30, "S3");
+  lcdRefresh(true);
+  delay_ms(1000);
   opentxClose();
   boardOff(); // Only turn power off if necessary
 

@@ -2090,6 +2090,7 @@ uint32_t pwrPressedDuration()
 
 uint32_t pwrCheck()
 {
+    return e_power_on;
   const char * message = nullptr;
 
   enum PwrCheckState {

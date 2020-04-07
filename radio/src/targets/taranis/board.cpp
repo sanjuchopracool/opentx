@@ -166,6 +166,14 @@ void boardInit()
   i2cInit();
   usbInit();
 
+  volatile int check = 0;
+//  while(check < 1)
+//  {
+//      check++;
+//      lcdDrawCenteredText(30, "STAGE1");
+//      lcdRefresh(false);
+//      delay_ms(1000);
+//  }
 #if defined(DEBUG) && defined(AUX_SERIAL_GPIO)
   auxSerialInit(0, 0); // default serial mode (None if DEBUG not defined)
   TRACE("\nTaranis board started :)");
@@ -188,6 +196,7 @@ void boardInit()
     pwrOn();
   }
 #endif
+
 
 #if defined(TOPLCD_GPIO)
   toplcdInit();
@@ -215,6 +224,10 @@ void boardInit()
 #endif
 
   backlightInit();
+
+//  lcdDrawCenteredText(30, "STAGE2");
+//  lcdRefresh(false);
+//  delay_ms(1000);
 }
 
 void boardOff()
