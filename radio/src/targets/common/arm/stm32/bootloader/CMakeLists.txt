@@ -103,6 +103,15 @@ if(PCB STREQUAL X7 OR PCB STREQUAL XLITE OR PCB STREQUAL XLITES)
     )
 endif()
 
+if(PCB STREQUAL BHIM)
+    set(BOOTLOADER_SRC
+      ${BOOTLOADER_SRC}
+      ../../../../../${STM32LIB_DIR}/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c
+      ../../../../../${STM32LIB_DIR}/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_sdio.c
+      ../../../../../targets/common/arm/stm32/sdio_sd.c
+      )
+endif()
+
 if(PCB STREQUAL X10 OR PCB STREQUAL X12S)
   set(BOOTLOADER_SRC
     ${BOOTLOADER_SRC}

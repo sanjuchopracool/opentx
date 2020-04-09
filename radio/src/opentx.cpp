@@ -2175,6 +2175,7 @@ uint32_t pwrCheck()
 #else
 uint32_t pwrCheck()
 {
+    return e_power_on;
 #if defined(SOFT_PWR_CTRL)
   if (pwrPressed()) {
     return e_power_on;

@@ -72,6 +72,9 @@
   #include "STM32F2xx_StdPeriph_Lib_V1.1.0/Libraries/STM32F2xx_StdPeriph_Driver/inc/misc.h"
 #endif
 
+#if defined(PCB_DEVEBOX)
+#include "STM32F4xx_DSP_StdPeriph_Lib_V1.4.0/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_sdio.h"
+#endif
 #if __clang__
 // Restore warnings about registers
 #pragma clang diagnostic pop
